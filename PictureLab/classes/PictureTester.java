@@ -105,6 +105,30 @@ public class PictureTester
     swan.explore();
   }
   
+  /** Method to test edgeDetection */
+  public static void testCopy()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.copy(swan,10,50);
+    swan.explore();
+  }
+  
+  /** Method to test edgeDetection */
+  public static void testCropAndCopy()
+  {
+    Picture swan = new Picture("swan.jpg");
+    Picture zerg = new Picture("zerg.jpg");
+    swan.cropAndCopy(zerg,10,110,105,125,100,150);
+    swan.explore();
+  }
+  
+  public static void testScaleByHalf()
+  {
+      Picture zerg = new Picture("zerg.jpg");
+      zerg.scaleByHalf();
+      zerg.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -131,7 +155,8 @@ public class PictureTester
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-    //testCopy();
+    testCopy();
+    testScaleByHalf();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
