@@ -171,20 +171,21 @@ public class Picture extends SimplePicture
   
   public void mirrorDiagonal()
   {
-    // Not finished
+    // Not finished (utilize the whiteout/erase method for scaleByHalf 'it used to make a diagonal white line')
     Pixel[][] pixels = this.getPixels2D();
     Pixel topPixel = null;
     Pixel bottomPixel = null;
     int width = pixels[0].length;
-    for (int row = 0; row < pixels.length; row++)
+    int height = pixels.length;
+    for (int row = 0; row < height; row++)
     {
-      for (int col = 0; col < width / 2; col++)
+      for (int col = 0; col < width; col++)
       {
-        topPixel = pixels[row][col];
+        topPixel = pixels[height - 1 - row][col];
         bottomPixel = pixels[row][width - 1 - col];
-        topPixel.setColor(bottomPixel.getColor());
+        bottomPixel.setColor(topPixel.getColor());
       }
-    } 
+    }  
   }
   
   /** Mirror just part of a picture of a temple */
@@ -310,16 +311,20 @@ public class Picture extends SimplePicture
       Pixel[][] pixels = this.getPixels2D();
       int prow = 0;
       int pcol = 0;
-      for(int row = 0; row < pixels.length ; row++)
+      for(int row = 0; row < pixels.length; row++)
       {
-          for(int col = 0; col < pixels[0].length ; col++)
+          for(int col = 0; col < pixels[0].length; col++)
           {
-              pixels[row][col].setColor(pixels[row][col].getColor());
+              pixels[row / 2][col / 2].setColor(pixels[row][col].getColor());
               prow = row;
               pcol = col;
           }
       }
-      for(int row = 0; row <= prow; row++)
+      for(int row = 0, col = 0; row <= prow; row++)
+      {
+          pixels[row][col].setColor(Color.WHITE);
+        }
+      for(int col = 0, row = 0; col <= pcol; col++)
       {
           pixels[row][col].setColor(Color.WHITE);
         }

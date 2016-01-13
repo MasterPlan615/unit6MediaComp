@@ -56,10 +56,10 @@ public class PictureTester
   /** Method to test mirrorVertical */
   public static void testMirrorDiagonal()
   {
-    Picture caterpillar = new Picture("caterpillar.jpg");
-    caterpillar.explore();
-    caterpillar.mirrorDiagonal();
-    caterpillar.explore();
+    Picture zerg = new Picture("zerg.jpg");
+    zerg.explore();
+    zerg.mirrorDiagonal();
+    zerg.explore();
   }
   
   /** Method to test mirrorTemple */
@@ -125,7 +125,9 @@ public class PictureTester
   public static void testScaleByHalf()
   {
       Picture zerg = new Picture("zerg.jpg");
+      Picture o_zerg = new Picture ("zerg.jpg");
       zerg.scaleByHalf();
+      o_zerg.explore();
       zerg.explore();
   }
   
