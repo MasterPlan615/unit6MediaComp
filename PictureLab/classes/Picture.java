@@ -171,21 +171,19 @@ public class Picture extends SimplePicture
   
   public void mirrorDiagonal()
   {
-    // Not finished (utilize the whiteout/erase method for scaleByHalf 'it used to make a diagonal white line')
     Pixel[][] pixels = this.getPixels2D();
-    Pixel topPixel = null;
-    Pixel bottomPixel = null;
+    Pixel topPixel = null, bottomPixel = null , leftPixel = null, rightPixel = null;
     int width = pixels[0].length;
     int height = pixels.length;
-    for (int row = 0; row < height; row++)
+    for(int i = 0; i < pixels.length; i++)
     {
-      for (int col = 0; col < width; col++)
-      {
-        topPixel = pixels[height - 1 - row][col];
-        bottomPixel = pixels[row][width - 1 - col];
-        bottomPixel.setColor(topPixel.getColor());
-      }
-    }  
+        for(int row = 0, col = 0; row < height && col < width; row++, col++)
+        {
+            topPixel = pixels[row][col];
+            bottomPixel = pixels[height - 1 - row][width - 1 - col];
+            bottomPixel.setColor(topPixel.getColor());
+        }
+    }
   }
   
   /** Mirror just part of a picture of a temple */
