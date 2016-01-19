@@ -98,6 +98,25 @@ public class Picture extends SimplePicture
         }
     }
 
+    /** Method to set the blue to 0 */
+    public void zeroOrange()
+    {
+        //work on
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                if(pixelObj.getBlue() <= 10 && pixelObj.getRed() >= 235 && pixelObj.getGreen() >= 70)
+                {
+                    pixelObj.setRed(0);
+                    pixelObj.setBlue(255);
+                    pixelObj.setGreen(165);
+                }
+            }
+        }
+    }
+    
     /** Method that mirrors the picture around a 
      * vertical mirror in the center of the picture
      * from left to right */
@@ -356,6 +375,16 @@ public class Picture extends SimplePicture
         this.copy(flower2,500,0);
         this.mirrorVertical();
         this.write("collage.jpg");
+    }
+    
+    public void createTheCollage()
+    {
+        Picture busterboy = new Picture("bustaboy.jpg");
+        Picture kamen = new Picture("kamen.jpg");
+        Pixel[][] pixels = busterboy.getPixels2D();
+        Pixel[][] pixels2 = kamen.getPixels2D();
+        busterboy.scaleByHalf();
+        busterboy.cropAndCopy(kamen, 20, 100, 45, 100, 200, 400);
     }
 
     /** Method to show large changes in color 

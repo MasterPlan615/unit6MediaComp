@@ -17,6 +17,29 @@ public class PictureTester
     beach.explore();
   }
   
+  public static void testZeroOrange()
+  {
+      Picture busterboy = new Picture("bustaboy.jpg");
+      Picture kamen = new Picture("kamen.jpg");
+      Pixel[][] pixels = busterboy.getPixels2D();
+      Pixel[][] pixels2 = kamen.getPixels2D();
+      busterboy.cropAndCopy(kamen, 20, 400, 45, 600, 500, 600);
+      busterboy.zeroBlue();
+      busterboy.mirrorHorizontal();
+      busterboy.mirrorVertical();
+      for(Pixel[] rowArray: pixels)
+      {
+          for(Pixel pixelObj: rowArray)
+          {
+              if(pixelObj.getGreen() <= 50 && pixelObj.getRed() <= 50)
+              {
+                  pixelObj.setBlue(pixelObj.getBlue() + 50);
+                }
+            }
+        }
+      busterboy.explore();
+    }
+  
   /** Method to test mirrorVertical */
   public static void testMirrorVertical()
   {
@@ -139,6 +162,7 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     testZeroBlue();
+    testZeroOrange();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
