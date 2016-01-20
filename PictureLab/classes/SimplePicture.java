@@ -57,7 +57,7 @@ public class SimplePicture implements DigitalPicture
   * of code in a constructor.
   */
  public SimplePicture() 
- {this(200,100);}
+ {this(3780,2966);}
  
  /**
   * A Constructor that takes a file name and uses the file to create

@@ -380,11 +380,83 @@ public class Picture extends SimplePicture
     public void createTheCollage()
     {
         Picture busterboy = new Picture("bustaboy.jpg");
-        Picture kamen = new Picture("kamen.jpg");
+        Picture busterboy2 = new Picture("bustaboy.jpg");
+        Picture busterboy3 = new Picture("bustaboy.jpg");
+        Picture busterboy4 = new Picture("bustaboy.jpg");
+        busterboy.mirrorVertical();
+        busterboy.zeroBlue();
         Pixel[][] pixels = busterboy.getPixels2D();
-        Pixel[][] pixels2 = kamen.getPixels2D();
-        busterboy.scaleByHalf();
-        busterboy.cropAndCopy(kamen, 20, 100, 45, 100, 200, 400);
+        for(Pixel[] rowArray: pixels)
+        {
+          for(Pixel pixelObj: rowArray)
+          {
+              if(pixelObj.getGreen() >= 50 && pixelObj.getRed() >= 50)
+              {
+                  pixelObj.setRed(200);
+                }
+          }
+        }
+        busterboy2.mirrorDiagonal();
+        //busterboy4.edgeDetection(10);
+        Pixel[][] pixels4 = busterboy4.getPixels2D();
+        for(Pixel[] rowArray: pixels4)
+        {
+          for(Pixel pixelObj: rowArray)
+          {
+              if(pixelObj.getGreen() <= 137 && pixelObj.getGreen() >= 60
+                && pixelObj.getRed() <= 184 && pixelObj.getRed() >= 102
+                && pixelObj.getBlue() <= 142 && pixelObj.getBlue() >= 69)
+              {
+                  pixelObj.setColor(Color.ORANGE);
+              }
+              else
+              {
+                  pixelObj.setColor(Color.BLUE);
+              }
+          }
+        }
+        Pixel[][] pixels3 = busterboy3.getPixels2D();
+        for(Pixel[] rowArray: pixels3)
+        {
+          for(Pixel pixelObj: rowArray)
+          {
+              pixelObj.setBlue(255 - pixelObj.getBlue());
+              pixelObj.setGreen(255 - pixelObj.getGreen());
+              pixelObj.setRed(255 - pixelObj.getRed());
+          }
+        }
+        busterboy3.mirrorHorizontal();
+        busterboy3.mirrorVertical();
+        Pixel[][] pixels2 = busterboy2.getPixels2D();
+        for(int i = 0; i < pixels2.length; i+=2)
+        {
+            for(int j = 0; j < pixels2[0].length; j+=2)
+            {
+                pixels2[i][j].setColor(Color.WHITE);
+            }
+        }
+        for(int i = 0; i < pixels4.length; i++)
+        {
+            for(int j = 0; j < pixels4[0].length; j++)
+            {
+                if(pixels4[i][j].getRed() == 255 && pixels4[i][j].getBlue() == 1 && pixels4[i][j].getGreen() == 200)
+                {
+                    pixels2[i][j].setColor(Color.RED);
+                }
+            }
+        }
+        this.copy(busterboy,0,0);
+        this.copy(busterboy2,0,1890);
+        this.copy(busterboy3,1483,0);
+        this.copy(busterboy4,1483,1890);
+        //3780x2966
+        //this.copy(kamen,0,400);
+        //this.copy(kamen,400,0);
+        //busterboy.zeroBlue();
+        //this.mirrorHorizontal();
+        //this.mirrorVertical();
+        
+        this.write("collagelab.jpg");
     }
 
     /** Method to show large changes in color 
@@ -418,10 +490,8 @@ public class Picture extends SimplePicture
      */
     public static void main(String[] args) 
     {
-        Picture beach = new Picture("beach.jpg");
-        beach.explore();
-        beach.zeroBlue();
-        beach.explore();
+        Picture collage = new Picture();
+        collage.createTheCollage();
     }
 
 } // this } is the end of class Picture, put all new methods before this
