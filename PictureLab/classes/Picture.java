@@ -383,6 +383,10 @@ public class Picture extends SimplePicture
         Picture busterboy2 = new Picture("bustaboy.jpg");
         Picture busterboy3 = new Picture("bustaboy.jpg");
         Picture busterboy4 = new Picture("bustaboy.jpg");
+        this.copy(busterboy,0,0);
+        this.copy(busterboy2,0,1890);
+        this.copy(busterboy3,1483,0);
+        this.copy(busterboy4,1483,1890);
         busterboy.mirrorVertical();
         busterboy.zeroBlue();
         Pixel[][] pixels = busterboy.getPixels2D();
@@ -435,20 +439,7 @@ public class Picture extends SimplePicture
                 pixels2[i][j].setColor(Color.WHITE);
             }
         }
-        for(int i = 0; i < pixels4.length; i++)
-        {
-            for(int j = 0; j < pixels4[0].length; j++)
-            {
-                if(pixels4[i][j].getRed() == 255 && pixels4[i][j].getBlue() == 1 && pixels4[i][j].getGreen() == 200)
-                {
-                    pixels2[i][j].setColor(Color.RED);
-                }
-            }
-        }
-        this.copy(busterboy,0,0);
-        this.copy(busterboy2,0,1890);
-        this.copy(busterboy3,1483,0);
-        this.copy(busterboy4,1483,1890);
+        
         //3780x2966
         //this.copy(kamen,0,400);
         //this.copy(kamen,400,0);
