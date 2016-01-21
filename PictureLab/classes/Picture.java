@@ -426,9 +426,7 @@ public class Picture extends SimplePicture
             {
                 if(pixels4[i][j].getRed() == 255 && pixels4[i][j].getGreen() == 165 && pixels4[i][j].getBlue() == 1)
                 {
-                    pixels[i][j].setRed(1);
-                    pixels[i][j].setGreen(165);
-                    pixels[i][j].setBlue(255);
+                    pixels[i][j].setRed(pixels[i][j].getRed() - 220);
                 }
             }
         }
@@ -445,7 +443,7 @@ public class Picture extends SimplePicture
               int cor1 = rand1.nextInt();
               int cor2 = rand2.nextInt();
               int cor3 = rand3.nextInt();
-              if(pixelObj.getGreen() <= 130 && pixelObj.getGreen() >= 83)
+              if(pixelObj.getGreen() <= 150 && pixelObj.getGreen() >= 63)
               {
                   pixelObj.setGreen(pixelObj.getGreen() + 75);
               }
@@ -464,7 +462,7 @@ public class Picture extends SimplePicture
               int cor1 = rand1.nextInt();
               int cor2 = rand2.nextInt();
               int cor3 = rand3.nextInt();
-              if(pixelObj.getRed() <= 193 && pixelObj.getRed() >= 152)
+              if(pixelObj.getRed() <= 213 && pixelObj.getRed() >= 132)
               {
                   pixelObj.setGreen(pixelObj.getGreen() + 75);
               }
@@ -483,7 +481,7 @@ public class Picture extends SimplePicture
               int cor1 = rand1.nextInt();
               int cor2 = rand2.nextInt();
               int cor3 = rand3.nextInt();
-              if(pixelObj.getBlue() <= 159 && pixelObj.getBlue() >= 111)
+              if(pixelObj.getBlue() <= 179 && pixelObj.getBlue() >= 91)
               {
                   pixelObj.setGreen(pixelObj.getGreen() + 75);
               }
@@ -521,11 +519,11 @@ public class Picture extends SimplePicture
         {
             for(int j = 0; j < pixels3[0].length; j++)
             {
-                if(pixels3[i][j].getGreen() <= 200 && pixels3[i][j].getGreen() >= 171
-                    && pixels3[i][j].getRed() <= 136 && pixels3[i][j].getRed() >= 98
-                    && pixels3[i][j].getBlue() <= 211 && pixels3[i][j].getBlue() >= 162)
+                if(pixels3[i][j].getGreen() <= 220 && pixels3[i][j].getGreen() >= 151
+                    && pixels3[i][j].getRed() <= 156 && pixels3[i][j].getRed() >= 78
+                    && pixels3[i][j].getBlue() <= 231 && pixels3[i][j].getBlue() >= 142)
                 {
-                    pixels3[i][j].setColor(Color.BLACK);
+                    pixels3[i][j].setGreen(0);
                 }
             }
         }
