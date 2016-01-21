@@ -383,10 +383,30 @@ public class Picture extends SimplePicture
         Picture busterboy2 = new Picture("bustaboy.jpg");
         Picture busterboy3 = new Picture("bustaboy.jpg");
         Picture busterboy4 = new Picture("bustaboy.jpg");
-        this.copy(busterboy,0,0);
-        this.copy(busterboy2,0,1890);
-        this.copy(busterboy3,1483,0);
-        this.copy(busterboy4,1483,1890);
+        
+        
+        busterboy4.mirrorDiagonal();
+        busterboy4.mirrorVertical();
+        Pixel[][] pixels4 = busterboy4.getPixels2D();
+        for(Pixel[] rowArray: pixels4)
+        {
+          for(Pixel pixelObj: rowArray)
+          {
+              if(pixelObj.getGreen() <= 137 && pixelObj.getGreen() >= 60
+                && pixelObj.getRed() <= 184 && pixelObj.getRed() >= 102
+                && pixelObj.getBlue() <= 142 && pixelObj.getBlue() >= 69)
+              {
+                  pixelObj.setRed(255);
+                  pixelObj.setGreen(165);
+                  pixelObj.setBlue(1);
+              }
+              else
+              {
+                  pixelObj.setBlue(pixelObj.getBlue() + 150);
+              }
+          }
+        }
+        
         busterboy.mirrorVertical();
         busterboy.zeroBlue();
         Pixel[][] pixels = busterboy.getPixels2D();
@@ -400,25 +420,93 @@ public class Picture extends SimplePicture
                 }
           }
         }
+        for(int i = 0; i < pixels4.length; i++)
+        {
+            for(int j = 0; j < pixels4[0].length; j++)
+            {
+                if(pixels4[i][j].getRed() == 255 && pixels4[i][j].getGreen() == 165 && pixels4[i][j].getBlue() == 1)
+                {
+                    pixels[i][j].setRed(1);
+                    pixels[i][j].setGreen(165);
+                    pixels[i][j].setBlue(255);
+                }
+            }
+        }
+        
+        Random rand1 = new Random(255);
+        Random rand2 = new Random(255);
+        Random rand3 = new Random(255);
         busterboy2.mirrorDiagonal();
-        //busterboy4.edgeDetection(10);
-        Pixel[][] pixels4 = busterboy4.getPixels2D();
-        for(Pixel[] rowArray: pixels4)
+        Pixel[][] pixels2 = busterboy2.getPixels2D();
+        for(Pixel[] rowArray: pixels2)
         {
           for(Pixel pixelObj: rowArray)
           {
-              if(pixelObj.getGreen() <= 137 && pixelObj.getGreen() >= 60
-                && pixelObj.getRed() <= 184 && pixelObj.getRed() >= 102
-                && pixelObj.getBlue() <= 142 && pixelObj.getBlue() >= 69)
+              int cor1 = rand1.nextInt();
+              int cor2 = rand2.nextInt();
+              int cor3 = rand3.nextInt();
+              if(pixelObj.getGreen() <= 130 && pixelObj.getGreen() >= 83)
               {
-                  pixelObj.setColor(Color.ORANGE);
+                  pixelObj.setGreen(pixelObj.getGreen() + 75);
               }
               else
               {
-                  pixelObj.setColor(Color.BLUE);
+                  pixelObj.setRed(cor1);
+                  pixelObj.setGreen(cor2);
+                  pixelObj.setBlue(cor3);
               }
           }
         }
+        for(Pixel[] rowArray: pixels2)
+        {
+          for(Pixel pixelObj: rowArray)
+          {
+              int cor1 = rand1.nextInt();
+              int cor2 = rand2.nextInt();
+              int cor3 = rand3.nextInt();
+              if(pixelObj.getRed() <= 193 && pixelObj.getRed() >= 152)
+              {
+                  pixelObj.setGreen(pixelObj.getGreen() + 75);
+              }
+               else
+              {
+                  pixelObj.setRed(cor1);
+                  pixelObj.setGreen(cor2);
+                  pixelObj.setBlue(cor3);
+              }
+          }
+        }
+        for(Pixel[] rowArray: pixels2)
+        {
+          for(Pixel pixelObj: rowArray)
+          {
+              int cor1 = rand1.nextInt();
+              int cor2 = rand2.nextInt();
+              int cor3 = rand3.nextInt();
+              if(pixelObj.getBlue() <= 159 && pixelObj.getBlue() >= 111)
+              {
+                  pixelObj.setGreen(pixelObj.getGreen() + 75);
+              }
+               else
+              {
+                  pixelObj.setRed(cor1);
+                  pixelObj.setGreen(cor2);
+                  pixelObj.setBlue(cor3);
+              }
+          }
+        }
+        for(Pixel[] rowArray: pixels2)
+        {
+            for(Pixel pixelObj: rowArray)
+            {
+                pixelObj.setRed(pixelObj.getRed() + 50);
+                pixelObj.setGreen(pixelObj.getGreen() + 50);
+                pixelObj.setBlue(pixelObj.getBlue() + 50);
+            }
+        }
+        
+        busterboy3.mirrorHorizontal();
+        busterboy3.mirrorVertical();
         Pixel[][] pixels3 = busterboy3.getPixels2D();
         for(Pixel[] rowArray: pixels3)
         {
@@ -429,23 +517,25 @@ public class Picture extends SimplePicture
               pixelObj.setRed(255 - pixelObj.getRed());
           }
         }
-        busterboy3.mirrorHorizontal();
-        busterboy3.mirrorVertical();
-        Pixel[][] pixels2 = busterboy2.getPixels2D();
-        for(int i = 0; i < pixels2.length; i+=2)
+        for(int i = 0; i < pixels3.length; i++)
         {
-            for(int j = 0; j < pixels2[0].length; j+=2)
+            for(int j = 0; j < pixels3[0].length; j++)
             {
-                pixels2[i][j].setColor(Color.WHITE);
+                if(pixels3[i][j].getGreen() <= 200 && pixels3[i][j].getGreen() >= 171
+                    && pixels3[i][j].getRed() <= 136 && pixels3[i][j].getRed() >= 98
+                    && pixels3[i][j].getBlue() <= 211 && pixels3[i][j].getBlue() >= 162)
+                {
+                    pixels3[i][j].setColor(Color.BLACK);
+                }
             }
         }
         
+        
         //3780x2966
-        //this.copy(kamen,0,400);
-        //this.copy(kamen,400,0);
-        //busterboy.zeroBlue();
-        //this.mirrorHorizontal();
-        //this.mirrorVertical();
+        this.copy(busterboy,0,0);
+        this.copy(busterboy2,0,1890);
+        this.copy(busterboy3,1483,0);
+        this.copy(busterboy4,1483,1890);
         
         this.write("collagelab.jpg");
     }
